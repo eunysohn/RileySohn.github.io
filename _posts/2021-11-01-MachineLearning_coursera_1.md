@@ -1,3 +1,9 @@
+layout: post
+title: "Storage"
+date: 2021-10-26 15:20:00 -0000
+categories: Infra
+
+
 Loss function : measures how good the current 'guess' is
 
 Dense: a layer of connected neurons
