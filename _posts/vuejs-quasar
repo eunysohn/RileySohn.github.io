@@ -1,0 +1,98 @@
+
+- 다른 css 파일에서 적용한 값 덮어쓸 때
+
+<q-scroll-area > 사용 후 자동으로 적용되는 <div class=q-scrollarea__content absolute> margin-top 적용건 
+
+ : 해당 vuejs 소스 아래에 style 적용하면 해당 페이지에만 적용됨
+
+
+
+- quasar scroll을 JS에서 사용할 때
+
+https://quasar.dev/quasar-utils/scrolling-utils
+
+
+
+- quasar scroll 
+
+가로면 overflow-x, veritcal이면 overflow-y auto 여야함
+
+
+
+- quasar scroll row
+
+https://quasar.dev/layout/grid/row
+
+사이즈 조절은 col-3 등으로. pixel 적을 경우 반영 안되는 경우 있음
+
+
+
+- image src에 variable 쓰면서 relative path 사용하기
+
+1) :src "'경로'+변수명+'나머지'" 사용하면 변수명을 가져다 변환은 해주는데 relative path 적용이 안됨. 
+
+```vue
+<template>
+  ~~
+  <div class="col-6" style="padding: 20px 15px 16px 18px; font-size: 16px; background-color: #fafafa; border-radius: 14px; margin-right: 8px;">
+      친구들의 <span style="font-weight: 900">{{ finacAvtyStatcValue }}%</span>가<br />
+      오늘 <span style="font-weight: 900">{{ finacAvtyName }}</span>를 했어요!
+      <img :src="'~assets/images/sep/banner_img_routinehabbit'+finacAvtyStatcIndex+'.png'" alt="습관" style="width: 154px; height: 154px; position: absolute; right: -175px; bottom: 0px;">
+    </div>
+</template>
+```
+
+2. relative path 적용
+
+ : ../../로 PATH 정확하게 적어줘야 함
+
+```vue
+<img :src="'../../assets/images/sep/banner_img_routinehabbit'+finacAvtyStatcIndex+'.png'" alt="습관" style="width: 154px; height: 154px; position: absolute; right: -175px; bottom: 0px;">
+```
+
+[HTML and Static Assets]: https://cli.vuejs.org/guide/html-and-static-assets.html#prefetch
+[Dynamic image paths not working]: https://forum.vuejs.org/t/dynamic-image-paths-not-working/48785
+
+
+
+- Random number generate
+
+```vue
+function getRandomNumberBetween(min, max){
+	return Math.floor(Math.random()*(max-min+1)+min);
+}
+```
+
+
+
+- 여러 size pannel 대응
+
+```vue
+<style>
+    @media screen and (max-width: 400px) {
+        .imgLeft {
+            float: right;
+            width: 8%;
+            hegit: 24px;
+            border-radius: 3px;
+            color: white;
+            font: 0.5rem;
+            text-align: center;
+            margin: 1%;
+            padding-top: 1px;
+        }
+    }
+</style>
+```
+
+
+
+- 조건에 따라 css 다르게 적용하기
+  - variable.Name이 0이면 A class, 아니면 B class 적용하고 C class는 언제나 적용함
+
+```vue
+<div :class="[ variable.Name === 0? 'classA': 'classB']" class="classC"
+```
+
+
+
